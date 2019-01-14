@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boss
+  labels:
+    type: boss
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: boss
+  template:
+    metadata:
+      labels:
+        type: boss
+    spec:
+      containers:
+        - name: boss
+          image: k8s-test/boss:1.0
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: boss
+  labels:
+    type: boss
+spec:
+  type: NodePort
+  ports:
+# external port
+    - port: 8080
+# target port
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    type: boss
