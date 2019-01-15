@@ -30,8 +30,8 @@ spec:
   type: NodePort
   ports:
 # external port
-    - port: 8080
-# target port
+    - port: 80
+# internal port
       targetPort: 8080
       protocol: TCP
       name: http
