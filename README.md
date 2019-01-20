@@ -1,6 +1,7 @@
 # spring-cloud-k8s-boss
 
 <h3>Spring Kubernetes discovery</h3>
+
 ```
 mvn clean install
 eval $(minikube docker-env)
@@ -20,6 +21,7 @@ curl $(minikube ip):$NODE_PORT
 <h3>Eureka</h3>
 
 Run boss with eureka client
+
 ```
 cd ..
 mvn clean install -P 'eureka,!kubernetes'
